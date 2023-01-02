@@ -1,0 +1,47 @@
+<html onclick = "jump()" > 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  
+  <div id="game">
+    <div id="character"></div>
+    <div id="block"></div>
+  </div>
+  
+  
+  <script>
+    
+    var character = document.getElementById("character")
+    var block = document.getElementById("block")
+    
+    function jump(){
+      if(character.classList.add != "animate"){
+        character.classList.add("animate")
+      } 
+      setTimeout(function(){
+        character.classList.remove("animate")
+       }, 500)
+    }
+    
+    var checkDead = setInterval(function (){
+          var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"))
+          
+          var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"))
+          
+          if(blockLeft < 20 && blockLeft > 0 && characterTop >= 331){
+            block.style.animation = "none"
+            block.style.display = "none"
+            alert("u lose")
+          }
+    }, 10)
+    
+  </script>
+  
+</body>
+</html>
